@@ -1,10 +1,12 @@
 import './App.css'
 import styled from "styled-components";
+import {Icon} from "./components/Icon.tsx";
 
 function App() {
     return (
         <div className="App">
             <Title>Welcome to IT-INCUBATOR !!!!</Title>
+            <Icon size={20} name={'game-development'} />
         </div>
     )
 }
