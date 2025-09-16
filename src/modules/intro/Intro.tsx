@@ -1,21 +1,17 @@
 import styled from "styled-components";
 import {Button} from "../../components/button/Button.tsx";
-import introBg from "../../shared/assets/images/intro-bg.svg";
 import introImg from "../../shared/assets/images/intro/person2.png";
 
 export const Intro = () => {
     return (
         <StyledSection>
-            <StyledContent>
-                <StyledWrapper>
-                    <IntroTitle>I’m Semen Krekotun<strong>Front-end</strong> Developer </IntroTitle>
-                    <p>Frontend-разработчик. Делаю быстрые и адаптивные интерфейсы, оживляю проекты с помощью анимаций и
-                        современных технологий.</p>
-                    <Button href="/resume" target="_blank" variant="primary" size="sm">View Resume</Button>
-                </StyledWrapper>
-                <IntroImg src={introImg} alt="I am"/>
-            </StyledContent>
-            <IntroBg src={introBg}/>
+            <StyledWrapper>
+                <IntroTitle>I’m Semen Krekotun<strong>Front-end</strong> Developer </IntroTitle>
+                <p>Frontend-разработчик. Делаю быстрые и адаптивные интерфейсы, оживляю проекты с помощью анимаций и
+                    современных технологий.</p>
+                <Button href="/resume" target="_blank" variant="primary" size="sm">View Resume</Button>
+            </StyledWrapper>
+            <IntroImg src={introImg} alt="I am"/>
         </StyledSection>
     );
 };
@@ -26,20 +22,13 @@ const StyledSection = styled.section`
     z-index: 2;
     display: flex;
     height: fit-content;
-    background-color: ${({theme}) => theme.colors.bgMain};
-    padding:${({theme}) => theme.spacing.lg} ${({theme}) => theme.spacing.lg} 0;
+    background-color: ${({ theme }) => theme.colors.bgMain};
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 897 413'%3E%3Ccircle cx='488' cy='30' r='7' stroke='%2305FF00' stroke-opacity='.8' stroke-width='2'/%3E%3Ccircle cx='56' cy='400' r='7' stroke='%2305FF00' stroke-opacity='.8' stroke-width='2'/%3E%3Ccircle cx='525.861' cy='357.964' r='7' stroke='%23FFB400' stroke-opacity='.8' stroke-width='2'/%3E%3Ccircle cx='8' cy='8' r='7' stroke='%23FFB400' stroke-opacity='.8' stroke-width='2'/%3E%3Cpath stroke='%23FFB400' stroke-opacity='.8' stroke-width='2' d='m862.924 40.997 12.577 6.149-6.148 12.577-12.578-6.148z'/%3E%3Cpath stroke='%230047FF' stroke-opacity='.8' stroke-width='2' d='m341.289 304.338 12.578 6.149-6.149 12.577-12.578-6.148z'/%3E%3Cpath stroke='%23FF2E00' stroke-opacity='.8' stroke-width='2' d='M894.196 408h-10.392l5.196-9 5.196 9Z'/%3E%3C/svg%3E");
+    background-size: 92%;
+    background-position: center center;
+    background-repeat: no-repeat;
+    padding: ${({theme}) => theme.spacing.lg} ${({theme}) => theme.spacing.lg} 0;
 `
-const IntroBg = styled.img`
-    position: absolute;
-    bottom: 1rem;
-    right: 2rem;
-    object-fit: cover;
-    width: auto;
-    height: fit-content;
-    z-index: -1;
-    display: block;
-`
-
 const IntroImg = styled.img`
     width: 300px;
     object-fit: contain;
@@ -55,21 +44,13 @@ const IntroTitle = styled.h1`
         padding: ${({theme}) => theme.spacing.sm};
     }
 `
-const StyledContent = styled.div`
-    position: relative;
-    display: flex;
-    gap: 2rem;
-    align-self: center;
-    justify-self: center;
-    z-index: 2;
-`
 
 const StyledWrapper = styled.div`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
-    
+
     p {
         margin-bottom: 1rem;
     }

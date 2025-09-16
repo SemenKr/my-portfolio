@@ -15,5 +15,4 @@ const StyledContainer = styled.div`
     grid-row: 1;
     max-width: 970px;
     margin: 0 auto;
-    outline: 1px solid rebeccapurple;
 `
