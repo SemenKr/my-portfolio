@@ -1,20 +1,22 @@
-import './App.css'
-import styled from "styled-components";
-import {Icon} from "./components/Icon.tsx";
+import {ThemeProvider} from "styled-components";
+import {useState} from "react";
+import {GlobalStyle} from "./shared/styles/GlobalStyles.tsx";
+import {darkTheme, defaultTheme} from "./shared/styles/Theme.styled.tsx";
+import {MainComponent} from "./layout/main/MainComponent.tsx";
+import {Header} from "./layout/header/Header.tsx";
 
 function App() {
+    const [isDark, setIsDark] = useState(false);
+
+    const theme = isDark ? darkTheme : defaultTheme;
+
     return (
-        <div className="App">
-            <Title>Welcome to IT-INCUBATOR !!!!</Title>
-            <Icon size={20} name={'game-development'} />
-        </div>
-    )
+        <ThemeProvider theme={theme}>
+            <GlobalStyle/>
+            <Header isDark={isDark} onToggleTheme={() => setIsDark(prev => !prev)}/>
+            <MainComponent />
+        </ThemeProvider>
+    );
 }
 
 export default App
-
-const Title = styled.h1`
-    font-size: 1.5em;
-    text-align: center;
-    color: #e91e63;
-`;
