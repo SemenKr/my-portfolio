@@ -7,8 +7,7 @@ export const Intro = () => {
             <h1>I’m Semen Krekotun<strong>Front-end</strong> Developer </h1>
             <p>Frontend-разработчик. Делаю быстрые и адаптивные интерфейсы, оживляю проекты с помощью анимаций и
                 современных технологий.</p>
-            <a href={'#'} target={'_blank'}>View Resume</a>
-            <Button as="a" href="/resume"  variant="primary" size="sm">View Resume</Button>
+            <Button href="/resume" target="_blank"  variant="primary" size="sm">View Resume</Button>
         </StyledSection>
     );
 };

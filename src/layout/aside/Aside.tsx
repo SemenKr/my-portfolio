@@ -26,6 +26,5 @@ const StyledAside = styled.aside`
     max-width: 20vw;
     box-shadow: ${({ theme }) => theme.shadows.md};
     background: ${({ theme }) => theme.colors.bgMain} ;
-    padding: 4rem 1.5rem;;
-
+    padding: 4rem 1.5rem;
 `
