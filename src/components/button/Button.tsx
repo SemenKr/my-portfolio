@@ -8,18 +8,21 @@ type ButtonProps = {
     size?: "sm" | "md" | "lg";
     onClick?: () => void;
     type?: "button" | "submit" | "reset";
+    href?: string;
 };
 
 const StyledButton = styled.button<ButtonProps>`
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    border: none;
+    border: 2px solid transparent;
     cursor: pointer;
+    box-shadow: ${({theme}) => theme.shadows.sm};
     font-weight: ${({theme}) => theme.fontWeights.medium};
     border-radius: ${({theme}) => theme.borderRadius.sm};
     transition: background-color ${({theme}) => theme.transition},
-    border-color ${({theme}) => theme.transition}, color ${({theme}) => theme.transition};
+    border-color ${({theme}) => theme.transition}, color ${({theme}) => theme.transition},
+    box-shadow ${({theme}) => theme.transition};
 
     ${({size}) =>
             size === "sm" &&
@@ -45,11 +48,12 @@ const StyledButton = styled.button<ButtonProps>`
     ${({variant}) =>
             variant === "primary" &&
             css`
-                background: #000;
-                color: #fff;
+                background: ${({theme}) => theme.colors.primary};
+                color: ${({theme}) => theme.colors.text.title};
 
                 &:hover {
-                    background: #333;
+                    color: ${({theme}) => theme.colors.text.inverted};
+                    box-shadow: ${({theme}) => theme.shadows.md};
                 }
             `}
 
@@ -60,20 +64,22 @@ const StyledButton = styled.button<ButtonProps>`
                 color: #000;
 
                 &:hover {
-                    background: #e0e0e0;
+                    box-shadow: ${({theme}) => theme.shadows.md};
                 }
             `}
 
     ${({variant}) =>
             variant === "outline" &&
             css`
-                background: transparent;
-                border: 2px solid #000;
-                color: #000;
+                background: ${({theme}) => theme.colors.bgMain};
+                border: 2px solid  ${({theme}) => theme.colors.secondary};
+                color:  ${({theme}) => theme.colors.secondary};
 
                 &:hover {
-                    background: #000;
-                    color: #fff;
+                    background: ${({theme}) => theme.colors.secondary};
+                    color: ${({theme}) => theme.colors.text.inverted};
+
+                    box-shadow: ${({theme}) => theme.shadows.md};
                 }
             `}
 `;

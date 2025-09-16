@@ -12,7 +12,7 @@ const breakpoints = {
 export const defaultTheme: DefaultTheme = {
     colors: {
         primary: "#FFB400",
-        secondary: "#2563EB",
+        secondary: "#3A3B3C",
         bgMain: "#FFFFFF",
         bgSecondary: "#F0F0F6",
         text: {

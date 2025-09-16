@@ -25,14 +25,12 @@ export const Header = ({ isDark, onToggleTheme }: HeaderProps) => {
 
 
 const StyledHeader = styled.header`
-    position: fixed;
     display: flex;
+    grid-column: 3/4;
     gap: ${({theme}) => theme.spacing.lg};
     flex-direction: column;
     align-items: center;
-    top: 0;
-    right: 0;
-    max-width: 305px;
+    max-width: 120px;
     box-shadow: ${({ theme }) => theme.shadows.md};
     background: ${({ theme }) => theme.colors.bgMain} ;
     padding: 4rem 1.5rem;;
