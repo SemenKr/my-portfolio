@@ -1,6 +1,6 @@
 // components/Button.tsx
 import React from "react";
-import styled, { css } from "styled-components";
+import styled, {css} from "styled-components";
 
 type ButtonProps = {
     children: React.ReactNode;
@@ -72,8 +72,8 @@ const StyledButton = styled.button<ButtonProps>`
             variant === "outline" &&
             css`
                 background: ${({theme}) => theme.colors.bgMain};
-                border: 2px solid  ${({theme}) => theme.colors.secondary};
-                color:  ${({theme}) => theme.colors.secondary};
+                border: 2px solid ${({theme}) => theme.colors.secondary};
+                color: ${({theme}) => theme.colors.secondary};
 
                 &:hover {
                     background: ${({theme}) => theme.colors.secondary};
@@ -84,7 +84,7 @@ const StyledButton = styled.button<ButtonProps>`
             `}
 `;
 
-const Button: React.FC<ButtonProps> = ({
+export const Button: React.FC<ButtonProps> = ({
                                            children,
                                            variant = "primary",
                                            size = "md",
@@ -96,5 +96,3 @@ const Button: React.FC<ButtonProps> = ({
         </StyledButton>
     );
 };
-
-export default Button;
