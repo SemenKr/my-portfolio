@@ -14,5 +14,5 @@ export const Logo = ({size}: LogoProps) => {
 };
 
 const StyledLogo = styled.a`
-    color: rebeccapurple;
+    color: ${(props) => props.theme.colors.primary};
 `

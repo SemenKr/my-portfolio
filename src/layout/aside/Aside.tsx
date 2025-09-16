@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import introImg from "../../shared/assets/images/intro/person2.png";
+import {ContactsBlock} from "../../components/contacts/Contacts.tsx";
 
 
 
@@ -15,9 +16,7 @@ export const Aside = ( ) => {
                     <p>Font-end Developer</p>
                 </AutorName>
             </AutorCard>
-            <div></div>имя
-            <div></div>роль
-            <div> </div> социалка
+            <ContactsBlock />
             <div></div>характеристики
             <div></div>Skills
             <div></div> Extra Skills
@@ -43,12 +42,15 @@ const AutorCard = styled.article`
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     gap: ${({theme}) => theme.spacing.md};
 `
 const Avatar = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
     position: relative;
     background-color: ${({ theme }) => theme.colors.bgSecondary};
@@ -72,4 +74,7 @@ const Avatar = styled.div`
         object-position: center -10%;
     }
 `
-const AutorName = styled.div``
+const AutorName = styled.div`
+    text-align: center;
+
+`
