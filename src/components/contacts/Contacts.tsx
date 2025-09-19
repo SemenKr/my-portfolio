@@ -50,6 +50,7 @@ const StyledList = styled.ul`
     align-items: center;
 
 
+
     a {
         width: 24px;
         height: 24px;

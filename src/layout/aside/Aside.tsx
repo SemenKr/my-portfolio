@@ -1,29 +1,32 @@
 import styled from "styled-components";
 import introImg from "../../shared/assets/images/intro/person2.png";
 import {ContactsBlock} from "../../components/contacts/Contacts.tsx";
+import {SkillsBLock} from "../../components/skills/Skills.tsx";
+import {About} from "../../components/about/About.tsx";
+import {ExtraSkills} from "../../components/extra-skills/ExtraSkills.tsx";
+import {Button} from "../../components/button/Button.tsx";
 
 
-
-export const Aside = ( ) => {
+export const Aside = () => {
     return (
         <StyledAside>
-            <AutorCard>
+            <AuthorCard>
                 <Avatar>
                     <img src={introImg} alt=""/>
                 </Avatar>
-                <AutorName>
+                <AuthorName>
                     <h2>Semen Krekotun</h2>
                     <p>Font-end Developer</p>
-                </AutorName>
-            </AutorCard>
-            <ContactsBlock />
-            <div></div>характеристики
-            <div></div>Skills
-            <div></div> Extra Skills
+                </AuthorName>
+            </AuthorCard>
+            <ContactsBlock/>
+            <About/>
+            <SkillsBLock/>
+            <ExtraSkills />
+            <Button href="/resume" target="_blank" variant="primary" size="sm">View Resume</Button>
         </StyledAside>
     );
 };
-
 
 const StyledAside = styled.aside`
     display: flex;
@@ -33,17 +36,19 @@ const StyledAside = styled.aside`
     flex-direction: column;
     align-items: center;
     max-width: 20vw;
-    box-shadow: ${({ theme }) => theme.shadows.md};
-    background: ${({ theme }) => theme.colors.bgMain} ;
+    box-shadow: ${({theme}) => theme.shadows.md};
+    background: ${({theme}) => theme.colors.bgMain};
     padding: 4rem 1.5rem;
+    min-width: 305px;
+}
 `
-
-const AutorCard = styled.article`
+const AuthorCard = styled.article`
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: ${({theme}) => theme.spacing.md};
+    
 `
 const Avatar = styled.div`
     display: flex;
@@ -53,7 +58,8 @@ const Avatar = styled.div`
     height: 150px;
     border-radius: 50%;
     position: relative;
-    background-color: ${({ theme }) => theme.colors.bgSecondary};
+    background-color: ${({theme}) => theme.colors.bgSecondary};
+
     &::after {
         content: '';
         position: absolute;
@@ -65,6 +71,7 @@ const Avatar = styled.div`
         height: 1rem;
         border-radius: 50%;
     }
+
     img {
         border-radius: 50%;
         display: block;
@@ -74,7 +81,6 @@ const Avatar = styled.div`
         object-position: center -10%;
     }
 `
-const AutorName = styled.div`
+const AuthorName = styled.div`
     text-align: center;
-
 `
