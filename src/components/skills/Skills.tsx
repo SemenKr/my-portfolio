@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import {useEffect, useState} from "react";
+import {AsideTitle} from "../titles/AsideTitle.tsx";
 
 
 type SkillBarProps = {
@@ -33,13 +34,16 @@ const skillsData: SkillBarProps[] = [
 
 export const SkillsBLock = () => {
     return (
-        <StyledList>
-            {skillsData.map((item, i) => (
-                <li key={i}>
-                    <SkillBar label={item.label} percentage={item.percentage}/>
-                </li>
-            ))}
-        </StyledList>
+        <SectionWrapper>
+            <AsideTitle>Extra Skills</AsideTitle>
+            <StyledList>
+                {skillsData.map((item, i) => (
+                    <li key={i}>
+                        <SkillBar label={item.label} percentage={item.percentage}/>
+                    </li>
+                ))}
+            </StyledList>
+        </SectionWrapper>
     );
 };
 
@@ -65,7 +69,14 @@ export const SkillBar: React.FC<SkillBarProps> = ({label, percentage}) => {
     );
 };
 
-const StyledList = styled.div`
+const SectionWrapper = styled.div`
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+`
+
+const StyledList = styled.ul`
     display: flex;
     flex-direction: column;
     gap: 1rem;

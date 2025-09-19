@@ -28,6 +28,7 @@ const StyledSection = styled.section`
     background-position: center center;
     background-repeat: no-repeat;
     padding: ${({theme}) => theme.spacing.lg} ${({theme}) => theme.spacing.lg} 0;
+    margin-bottom: 60px;
 `
 const IntroImg = styled.img`
     width: 300px;

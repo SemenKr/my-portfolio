@@ -1,8 +1,32 @@
+import {AsideTitle} from "../titles/AsideTitle.tsx";
+
+export const ExtraSkills = () => {
+    return (
+        <Wrapper>
+            <AsideTitle>Extra Skills</AsideTitle>
+            <List>
+                {extraSkillsData.map((row, i) => (
+                    <ListItem key={i}>
+                        <Icon name={"extra-skill-icon"}/>
+                        {row.map((skill, j) => (
+                            <span key={j}>
+                            {skill}
+                                {j < row.length - 1 && ","}
+                        </span>
+                        ))}
+                    </ListItem>
+                ))}
+            </List>
+        </Wrapper>
+
+    )
+}
 import styled from "styled-components";
+
 import {Icon} from "../Icon.tsx";
 
-type ExtraSkillBarProps = string[]
 
+type ExtraSkillBarProps = string[]
 
 const extraSkillsData: ExtraSkillBarProps[] = [
     ["Bootstrap", "Materialize"],
@@ -11,24 +35,12 @@ const extraSkillsData: ExtraSkillBarProps[] = [
     ["GIT", "Knowledge"]
 ];
 
-export const ExtraSkills = () => {
-    return (
-        <List>
-            {extraSkillsData.map((row, i) => (
-                <ListItem key={i}>
-                    <Icon name={"extra-skill-icon"}/>
-                    {row.map((skill, j) => (
-                        <span key={j}>
-                            {skill}
-                            {j < row.length - 1 && ","}
-                        </span>
-                    ))}
-                </ListItem>
-            ))}
-        </List>
-    )
-}
-
+const Wrapper = styled.div`
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+`
 const List = styled.ul`
     display: flex;
     flex-direction: column;
