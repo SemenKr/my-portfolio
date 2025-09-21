@@ -3,7 +3,6 @@ import {SectionTitle} from "../../components/titles/SectionTitle.tsx";
 import {Icon} from "../../components/Icon.tsx";
 import {AsideTitle} from "../../components/titles/AsideTitle.tsx";
 
-
 export const MyServices = () => {
     return (
         <SectionWrapper>

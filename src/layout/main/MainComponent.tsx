@@ -1,12 +1,14 @@
 import {Intro} from "../../modules/intro/Intro.tsx";
 import styled from "styled-components";
 import {MyServices} from "../../modules/my-services/MyServices.tsx";
+import {Recommendations} from "../../modules/recommendations/Recommendations.tsx";
 
 export const MainComponent = () => {
     return (
         <StyledContainer>
             <Intro/>
             <MyServices />
+            <Recommendations />
         </StyledContainer>
     );
 };
