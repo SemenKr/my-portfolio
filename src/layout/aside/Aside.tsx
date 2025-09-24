@@ -10,37 +10,47 @@ import {Button} from "../../components/button/Button.tsx";
 export const Aside = () => {
     return (
         <StyledAside>
-            <AuthorCard>
-                <Avatar>
-                    <img src={introImg} alt=""/>
-                </Avatar>
-                <AuthorName>
-                    <h2>Semen Krekotun</h2>
-                    <p>Font-end Developer</p>
-                </AuthorName>
-            </AuthorCard>
-            <ContactsBlock/>
-            <About/>
-            <SkillsBLock/>
-            <ExtraSkills />
-            <Button href="/resume" target="_blank" variant="primary" size="sm">View Resume</Button>
+            <StyckyWrapper>
+                <AuthorCard>
+                    <Avatar>
+                        <img src={introImg} alt=""/>
+                    </Avatar>
+                    <AuthorName>
+                        <h2>Semen Krekotun</h2>
+                        <p>Font-end Developer</p>
+                    </AuthorName>
+                </AuthorCard>
+                <ContactsBlock/>
+                <About/>
+                <SkillsBLock/>
+                <ExtraSkills />
+                <Button href="/resume" target="_blank" variant="primary" size="sm">View Resume</Button>
+            </StyckyWrapper>
+
         </StyledAside>
     );
 };
 
 const StyledAside = styled.aside`
-    display: flex;
     grid-column: 1/2;
     grid-row: 1;
+    height: 100%;
+    background: ${({theme}) => theme.colors.bgMain};
+    box-shadow: ${({theme}) => theme.shadows.md};
+    position: relative;
+`
+
+const StyckyWrapper = styled.div`
+    display: flex;
     gap: ${({theme}) => theme.spacing.lg};
     flex-direction: column;
     align-items: center;
     max-width: 20vw;
-    box-shadow: ${({theme}) => theme.shadows.md};
-    background: ${({theme}) => theme.colors.bgMain};
     padding: 4rem 1.5rem;
     min-width: 305px;
-}
+    height: fit-content;
+    position: sticky;
+    top: -20rem;
 `
 const AuthorCard = styled.article`
     display: flex;

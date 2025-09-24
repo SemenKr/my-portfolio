@@ -21,4 +21,6 @@ const StyledContainer = styled.div`
     max-width: 970px;
     margin: 0 auto;
     gap: 70px;
+    padding-bottom: 2rem;
+    position: relative;
 `

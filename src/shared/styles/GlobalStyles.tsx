@@ -1,5 +1,8 @@
 import {createGlobalStyle} from "styled-components";
 import "normalize.css";
+import 'swiper/css';
+import 'swiper/css/pagination';
+
 
 export const GlobalStyle = createGlobalStyle`
     *, *::before, *::after {
