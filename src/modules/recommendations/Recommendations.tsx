@@ -3,104 +3,36 @@ import { SectionTitle } from "../../components/titles/SectionTitle.tsx";
 import { AsideTitle } from "../../components/titles/AsideTitle.tsx";
 import { Rating } from "../../components/rating/Rating.tsx";
 import { UserCard } from "../../components/rating/UserCard.tsx";
-import userImg1 from "../../shared/assets/images/recomendations/user1.jpg";
-import userImg2 from "../../shared/assets/images/recomendations/user2.jpg";
-import userImg3 from "../../shared/assets/images/recomendations/user3.jpg";
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination, Autoplay } from 'swiper/modules';
-
-
-
-// Тип для данных рекомендации
-interface RecommendationData {
-    id: number;
-    rating: 1 | 2 | 3 | 4 | 5;
-    title: string;
-    description: string;
-    userName: string;
-    userProfession: string;
-    userImage: string;
-}
-
-const recommendationsData: RecommendationData[] = [
-    {
-        id: 1,
-        rating: 5,
-        title: "Great Quality!",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vitae nulla diam in ac dictum a rna viverra morbi. Morbi donrna viverra morbi. Morbi don urna viverra morbi. Morbi donec amet",
-        userName: "John Doe",
-        userProfession: "Frontend Developer",
-        userImage: userImg1
-    },
-    {
-        id: 2,
-        rating: 4,
-        title: "Excellent Service",
-        description: "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.",
-        userName: "Jane Smith",
-        userProfession: "UI/UX Designer",
-        userImage: userImg2
-    },
-    {
-        id: 3,
-        rating: 5,
-        title: "Highly Recommended",
-        description: "Velit officia consequat duis enim velit mollit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vitae nulla diam in ac dictum a urna viverra morbi.",
-        userName: "Mike Johnson",
-        userProfession: "Fullstack Developer",
-        userImage: userImg3
-    },
-    {
-        id: 4,
-        rating: 3,
-        title: "Good Experience",
-        description: "Consectetur adipiscing elit. Vitae nulla diam in ac dictum a urna viverra morbi. Velit officia consequat duis enim velit mollit.",
-        userName: "Sarah Wilson",
-        userProfession: "Product Manager",
-        userImage: userImg1
-    }
-];
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination, Autoplay } from "swiper/modules";
+import { recommendationsData } from "../../shared/mocks/recomentationData.ts";
 
 export const Recommendations = () => {
     return (
-        <SectionWrapper>
-            <SectionTitle as={"h2"}>Recommendations</SectionTitle>
+        <Container>
+            <SectionTitle as="h2">Recommendations</SectionTitle>
             <Description>
-                Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia
-                consequat duis enim velit mollit. lorem ipsum
+                Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.
+                Velit officia consequat duis enim velit mollit. lorem ipsum
             </Description>
 
-            <SliderContainer>
+            <SliderWrapper>
                 <Swiper
                     modules={[Pagination, Autoplay]}
-                    spaceBetween={10}
+                    spaceBetween={20}
                     slidesPerView={1}
-                    pagination={{
-                        clickable: true,
-                    }}
+                    pagination={{ clickable: true }}
                     autoplay={{
                         delay: 5000,
                         disableOnInteraction: false,
-                    }}
-                    breakpoints={{
-                        // 0px и выше: 1 слайд
-                        0: {
-                            slidesPerView: 1,
-                            spaceBetween: 20,
-                        },
-                        // 768px и выше: 2 слайда
-                        768: {
-                            slidesPerView: 2,
-                            spaceBetween: 10,
-                        },
-                        // 1024px и выше: 3 слайда
-                        1024: {
-                            slidesPerView: 3,
-                            spaceBetween: 10,
-                        },
+                        pauseOnMouseEnter: true,
                     }}
                     loop={true}
-                    watchOverflow={true}
+                    breakpoints={{
+                        1280: { slidesPerView: 3, spaceBetween: 20 },
+                        1024: { slidesPerView: 2, spaceBetween: 20 },
+                        0: { slidesPerView: 1, spaceBetween: 10 },
+                    }}
                 >
                     {recommendationsData.map((recommendation) => (
                         <SwiperSlide key={recommendation.id}>
@@ -108,7 +40,9 @@ export const Recommendations = () => {
                                 <ServicesItem>
                                     <Rating value={recommendation.rating} />
                                     <AsideTitle>{recommendation.title}</AsideTitle>
-                                    <CardDescription>{recommendation.description}</CardDescription>
+                                    <CardDescription>
+                                        {recommendation.description}
+                                    </CardDescription>
                                     <UserCard
                                         name={recommendation.userName}
                                         profession={recommendation.userProfession}
@@ -119,29 +53,29 @@ export const Recommendations = () => {
                         </SwiperSlide>
                     ))}
                 </Swiper>
-            </SliderContainer>
-        </SectionWrapper>
+            </SliderWrapper>
+        </Container>
     );
 };
 
-const SectionWrapper = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+const Container = styled.div`
     width: 100%;
-    gap: ${({theme}) => theme.spacing.md};
-    padding: 0 20px;
-    overflow: hidden;
-    max-width: 970px;
+    max-width: 1200px;
     margin: 0 auto;
-`
+    padding: 0 ${({ theme }) => theme.spacing.md};
+    box-sizing: border-box;
+
+    ${({ theme }) => theme.media.tablet} {
+        padding: 0 ${({ theme }) => theme.spacing.sm};
+    }
+`;
 
 const Description = styled.p`
     max-width: 430px;
     text-align: center;
-    color: ${(props) => props.theme.colors.text.primary};
-`
+    color: ${({ theme }) => theme.colors.text.primary};
+    margin: 0 auto ${({ theme }) => theme.spacing.lg};
+`;
 
 const CardDescription = styled.p`
     text-align: left;
@@ -150,74 +84,109 @@ const CardDescription = styled.p`
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
-    color: ${(props) => props.theme.colors.text.primary};
-`
+    color: ${({ theme }) => theme.colors.text.primary};
+    margin: 0;
+`;
 
-const SliderContainer = styled.div`
+const SliderWrapper = styled.div`
+  width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+
+  .swiper {
     width: 100%;
-    position: relative;
-    padding: 20px 0 40px;
+    overflow: hidden;
+    cursor: grab;
 
-    .swiper {
-        width: 100%;
+    &:active {
+      cursor: grabbing;
     }
+  }
 
-    .swiper-slide {
-        height: auto;
-        display: flex;
-        justify-content: center;
-    }
+  .swiper-wrapper {
+    align-items: stretch;
+  }
 
-    .swiper-pagination {
-        position: relative;
-        bottom: 0;
-        margin-top: 30px;
-    }
-
-    .swiper-pagination-bullet {
-        width: 8px;
-        height: 8px;
-        background: ${({theme}) => theme.colors.border};
-        opacity: 0.6;
-        transition: all 0.3s ease;
-
-        &:hover {
-            opacity: 1;
-        }
-    }
-
-    .swiper-pagination-bullet-active {
-        background: ${({theme}) => theme.colors.primary};
-        opacity: 1;
-        transform: scale(1.2);
-    }
-`
-
-const SlideContent = styled.div`
-    width: 100%;
-    height: 100%;
+  .swiper-slide {
+    height: auto;
     display: flex;
     justify-content: center;
-`
+    transition: opacity ${({ theme }) => theme.transition};
 
-const ServicesItem = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    padding: 25px;
-    gap: 20px;
-    background: ${({theme}) => theme.colors.bgMain};
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    height: 100%;
-    width: 100%;
-    max-width: 350px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    box-sizing: border-box;
+    &:not(.swiper-slide-active) {
+      opacity: 0.9;
+
+      ${({ theme }) => theme.media.tablet} {
+        opacity: 1;
+      }
+    }
+
+    &.swiper-slide-active {
+      opacity: 1;
+    }
+  }
+
+  .swiper-pagination {
+    position: relative;
+    bottom: 0;
+    margin-top: ${({ theme }) => theme.spacing.md};
+  }
+
+  .swiper-pagination-bullet {
+    width: 10px;
+    height: 10px;
+    background: ${({ theme }) => theme.colors.border};
+    opacity: 0.6;
+    transition: all ${({ theme }) => theme.transition};
 
     &:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+      opacity: 1;
     }
-`
+  }
+
+  .swiper-pagination-bullet-active {
+    background: ${({ theme }) => theme.colors.primary};
+    opacity: 1;
+    transform: scale(1.3);
+  }
+`;
+
+const SlideContent = styled.div`
+    display: flex;
+    width: 100%;
+    height: auto; /* не фиксируем высоту */
+    justify-content: stretch;
+    align-items: stretch;
+    box-sizing: border-box;
+    padding:${({ theme }) => theme.spacing.md} ${({ theme }) => theme.spacing.xs} ;
+`;
+
+
+const ServicesItem = styled.div`
+    flex: 1;
+    width: 100%;
+    min-width: 260px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    padding: ${({ theme }) => theme.spacing.lg};
+    gap: ${({ theme }) => theme.spacing.md};
+    background: ${({ theme }) => theme.colors.bgMain};
+    border-radius: ${({ theme }) => theme.borderRadius.lg};
+    box-shadow: ${({ theme }) => theme.shadows.md};
+    transition: transform ${({ theme }) => theme.transition},
+    box-shadow ${({ theme }) => theme.transition};
+    box-sizing: border-box;
+
+    height: 100%;
+
+    .swiper-slide-active & {
+        transform: translateY(-5px) scale(1.02);
+    }
+
+    ${({ theme }) => theme.media.tablet} {
+        padding: ${({ theme }) => theme.spacing.md};
+    }
+`;
