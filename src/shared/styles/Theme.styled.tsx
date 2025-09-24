@@ -1,6 +1,4 @@
-// src/shared/theme.ts
 import { DefaultTheme } from "styled-components";
-
 
 const breakpoints = {
     mobile: "480px",
@@ -25,8 +23,8 @@ export const defaultTheme: DefaultTheme = {
         success: "#4CAF50",
     },
     fontSize: {
-        xs: "12px",
-        sm: "14px",
+        xs: "10px",
+        sm: "15px",
         md: "16px",
         lg: "20px",
         xl: "32px",

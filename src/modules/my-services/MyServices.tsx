@@ -1,14 +1,13 @@
 import styled from "styled-components";
-import {SectionTitle} from "../../components/titles/SectionTitle.tsx";
 import {Icon} from "../../components/Icon.tsx";
 import {AsideTitle} from "../../components/titles/AsideTitle.tsx";
+import {SectionBlock} from "../../components/section/SectionBlock.tsx";
 
 export const MyServices = () => {
     return (
-        <SectionWrapper>
-            <SectionTitle as={"h2"}>My Services</SectionTitle>
-            <Description>Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia
-                consequat duis enim velit mollit. lorem ipsum</Description>
+        <SectionBlock title={"My Services"}
+                      description={"Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia\n" +
+                          "                consequat duis enim velit mollit. lorem ipsum"}>
             <ServicesList>
                 <ServicesItem>
                     <Icon name={"development"} size={68}/>
@@ -41,18 +40,10 @@ export const MyServices = () => {
                     <Description>Blog, E-commerce</Description>
                 </ServicesItem>
             </ServicesList>
-        </SectionWrapper>
+        </SectionBlock>
     );
 };
 
-const SectionWrapper = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    gap: ${({theme}) => theme.spacing.md};
-`
 
 const Description = styled.p`
     max-width: 430px;

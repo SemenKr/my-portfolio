@@ -1,81 +1,59 @@
 import styled from "styled-components";
-import { SectionTitle } from "../../components/titles/SectionTitle.tsx";
 import { AsideTitle } from "../../components/titles/AsideTitle.tsx";
 import { Rating } from "../../components/rating/Rating.tsx";
 import { UserCard } from "../../components/rating/UserCard.tsx";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
 import { recommendationsData } from "../../shared/mocks/recomentationData.ts";
+import {SectionBlock} from "../../components/section/SectionBlock.tsx";
 
 export const Recommendations = () => {
     return (
-        <Container>
-            <SectionTitle as="h2">Recommendations</SectionTitle>
-            <Description>
-                Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.
-                Velit officia consequat duis enim velit mollit. lorem ipsum
-            </Description>
-
-            <SliderWrapper>
-                <Swiper
-                    modules={[Pagination, Autoplay]}
-                    spaceBetween={20}
-                    slidesPerView={1}
-                    pagination={{ clickable: true }}
-                    autoplay={{
-                        delay: 5000,
-                        disableOnInteraction: false,
-                        pauseOnMouseEnter: true,
-                    }}
-                    loop={true}
-                    breakpoints={{
-                        1280: { slidesPerView: 3, spaceBetween: 20 },
-                        1024: { slidesPerView: 2, spaceBetween: 20 },
-                        0: { slidesPerView: 1, spaceBetween: 10 },
-                    }}
-                >
-                    {recommendationsData.map((recommendation) => (
-                        <SwiperSlide key={recommendation.id}>
-                            <SlideContent>
-                                <ServicesItem>
-                                    <Rating value={recommendation.rating} />
-                                    <AsideTitle>{recommendation.title}</AsideTitle>
-                                    <CardDescription>
-                                        {recommendation.description}
-                                    </CardDescription>
-                                    <UserCard
-                                        name={recommendation.userName}
-                                        profession={recommendation.userProfession}
-                                        image={recommendation.userImage}
-                                    />
-                                </ServicesItem>
-                            </SlideContent>
-                        </SwiperSlide>
-                    ))}
-                </Swiper>
-            </SliderWrapper>
-        </Container>
+            <SectionBlock title="Recommendations" description={'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.\n' +
+                '                Velit officia consequat duis enim velit mollit. lorem ipsum'}>
+                <SliderWrapper>
+                    <Swiper
+                        modules={[Pagination, Autoplay]}
+                        spaceBetween={20}
+                        slidesPerView={1}
+                        pagination={{ clickable: true }}
+                        autoplay={{
+                            delay: 5000,
+                            disableOnInteraction: false,
+                            pauseOnMouseEnter: true,
+                        }}
+                        loop={true}
+                        breakpoints={{
+                            1280: { slidesPerView: 3, spaceBetween: 20 },
+                            1024: { slidesPerView: 2, spaceBetween: 20 },
+                            0: { slidesPerView: 1, spaceBetween: 10 },
+                        }}
+                    >
+                        {recommendationsData.map((recommendation) => (
+                            <SwiperSlide key={recommendation.id}>
+                                <SlideContent>
+                                    <ServicesItem>
+                                        <Rating value={recommendation.rating} />
+                                        <AsideTitle>{recommendation.title}</AsideTitle>
+                                        <CardDescription>
+                                            {recommendation.description}
+                                        </CardDescription>
+                                        <UserCard
+                                            name={recommendation.userName}
+                                            profession={recommendation.userProfession}
+                                            image={recommendation.userImage}
+                                        />
+                                    </ServicesItem>
+                                </SlideContent>
+                            </SwiperSlide>
+                        ))}
+                    </Swiper>
+                </SliderWrapper>
+            </SectionBlock>
     );
 };
 
-const Container = styled.div`
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 ${({ theme }) => theme.spacing.md};
-    box-sizing: border-box;
 
-    ${({ theme }) => theme.media.tablet} {
-        padding: 0 ${({ theme }) => theme.spacing.sm};
-    }
-`;
-
-const Description = styled.p`
-    max-width: 430px;
-    text-align: center;
-    color: ${({ theme }) => theme.colors.text.primary};
-    margin: 0 auto ${({ theme }) => theme.spacing.lg};
-`;
 
 const CardDescription = styled.p`
     text-align: left;
@@ -182,9 +160,8 @@ const ServicesItem = styled.div`
 
     height: 100%;
 
-    .swiper-slide-active & {
-        transform: translateY(-5px) scale(1.02);
-    }
+    //.swiper-slide-active & {
+    //}
 
     ${({ theme }) => theme.media.tablet} {
         padding: ${({ theme }) => theme.spacing.md};

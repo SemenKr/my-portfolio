@@ -2,6 +2,10 @@ import {Intro} from "../../modules/intro/Intro.tsx";
 import styled from "styled-components";
 import {MyServices} from "../../modules/my-services/MyServices.tsx";
 import {Recommendations} from "../../modules/recommendations/Recommendations.tsx";
+import {Education} from "../../modules/education/Education.tsx";
+import {WorkHistory} from "../../modules/work-history/WorkHistory.tsx";
+import {Portfolio} from "../../modules/portfolio/Portfolio.tsx";
+import {Blog} from "../../modules/blog/Blog.tsx";
 
 export const MainComponent = () => {
     return (
@@ -9,6 +13,10 @@ export const MainComponent = () => {
             <Intro/>
             <MyServices />
             <Recommendations />
+            <Education />
+            <WorkHistory />
+            <Portfolio />
+            <Blog />
         </StyledContainer>
     );
 };
