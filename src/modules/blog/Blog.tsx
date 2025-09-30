@@ -78,7 +78,7 @@ export const Blog = () => {
 
 							<ArticleFooter>
 								<PublishDate>{ post.date }</PublishDate>
-								<ReadMore href='#'>Learn more &gt;</ReadMore>
+								<ReadMore>Learn more  &gt;</ReadMore>
 							</ArticleFooter>
 						</ArticleContent>
 					</BlogCard>
@@ -183,7 +183,7 @@ const PublishDate = styled.span`
   opacity: 0.7;
 `;
 
-const ReadMore = styled.a`
+const ReadMore = styled.span`
   color: ${({ theme }) => theme.colors.primary};
   font-weight: 500;
   font-size: 0.875rem;
