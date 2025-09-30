@@ -69,7 +69,7 @@ export const YandexMap = ({
 						[latitude, longitude],
 						{
 							balloonContent: `
-      <div style="padding: 10px;">
+      <div>
         <h3 style="margin: 0 0 10px 0; color: #333;">${markerText}</h3>
         <p style="margin: 0; color: #666;">Добро пожаловать!</p>
       </div>

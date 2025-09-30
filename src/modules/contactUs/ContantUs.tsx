@@ -1,17 +1,15 @@
 import { ContactInfo } from '../../components/contact-info/ContactInfo'
 import { ContactForm } from '../../components/form/ContactForm'
-import { SectionBlock } from '../../components/section/SectionBlock'
 import styled from 'styled-components'
+import { SectionTitle } from '../../components/titles/SectionTitle'
 
 export const ContactUs = () => {
 	return (
 		<FormWrapper>
-			<FormSectionBlock   title={ "Leave us your info" } >
-				<ContactForm />
-			</FormSectionBlock>
-			<FormSectionBlock   title={ "Contact information" } >
+				<SectionTitleForm as="h2">Contact Me</SectionTitleForm>
+				<ContactFormStyled />
+				<SectionTitleInfo as="h2">Contact Me</SectionTitleInfo>
 				<ContactInfo />
-			</FormSectionBlock>
 		</FormWrapper>
 
 	)
@@ -22,6 +20,18 @@ const FormWrapper = styled.div`
 	gap: 1rem;
 `
 
-const FormSectionBlock = styled(SectionBlock)`
-	padding: 0;
+const SectionTitleForm = styled(SectionTitle)`
+	grid-column: 1 ;
+	text-align: center;
+`
+
+const SectionTitleInfo = styled(SectionTitle)`
+	grid-column: 2 ;
+	grid-row: 1 ;
+	text-align: center;
+`
+const ContactFormStyled = styled(ContactForm)`
+	grid-column: 1 ;
+	grid-row: 2 ;
+	width: 100% ;
 `

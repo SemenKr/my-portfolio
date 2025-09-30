@@ -32,7 +32,6 @@ export const ContactForm = () => {
       [name]: value
     }));
     
-    // Clear error when user starts typing
     if (errors[name as keyof FormErrors]) {
       setErrors(prev => ({
         ...prev,
@@ -71,9 +70,8 @@ export const ContactForm = () => {
 
     setIsSubmitting(true);
 
-    // Используем setTimeout вместо async/await чтобы избежать Promise
     setTimeout(() => {
-      // Здесь будет ваша логика отправки формы
+      // Здесь будет логика отправки формы
       console.log('Form submitted:', formData);
       
       // Сброс формы после "успешной" отправки
@@ -172,7 +170,7 @@ export const ContactForm = () => {
 
 // Styled Components (остаются без изменений)
 const FormContainer = styled.div`
-  margin: 0 auto;
+  margin: 0;
   padding: 2rem;
   background: ${({ theme }) => theme.colors.bgMain};
   border-radius: ${({ theme }) => theme.borderRadius.lg};
