@@ -4,8 +4,8 @@ import {MyServices} from "../../modules/my-services/MyServices.tsx";
 import {Recommendations} from "../../modules/recommendations/Recommendations.tsx";
 import {Education} from "../../modules/education/Education.tsx";
 import {WorkHistory} from "../../modules/work-history/WorkHistory.tsx";
-import {Portfolio} from "../../modules/portfolio/Portfolio.tsx";
 import {Blog} from "../../modules/blog/Blog.tsx";
+import { ProjectsSection } from '../../modules/projects/ProjectsSection.tsx';
 
 export const MainComponent = () => {
     return (
@@ -15,7 +15,7 @@ export const MainComponent = () => {
             <Recommendations />
             <Education />
             <WorkHistory />
-            <Portfolio />
+            <ProjectsSection />
             <Blog />
         </StyledContainer>
     );

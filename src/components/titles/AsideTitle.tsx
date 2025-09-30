@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-type AsideHeadingProps = {
+interface AsideHeadingProps {
     children: React.ReactNode;
 };
 

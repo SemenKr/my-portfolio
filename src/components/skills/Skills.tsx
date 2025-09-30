@@ -2,8 +2,7 @@ import styled from "styled-components";
 import {useEffect, useState} from "react";
 import {AsideTitle} from "../titles/AsideTitle.tsx";
 
-
-type SkillBarProps = {
+interface SkillBarProps  {
     label: string;
     percentage: number;
 };
@@ -29,7 +28,6 @@ const skillsData: SkillBarProps[] = [
         label: "Wordpress",
         percentage: 50
     },
-
 ]
 
 export const SkillsBLock = () => {
@@ -47,11 +45,10 @@ export const SkillsBLock = () => {
     );
 };
 
-export const SkillBar: React.FC<SkillBarProps> = ({label, percentage}) => {
+export const SkillBar = ({label, percentage}: SkillBarProps) => {
     const [progress, setProgress] = useState(0);
 
     useEffect(() => {
-        // при маунте плавно доезжаем до процента
         const timeout = setTimeout(() => setProgress(percentage), 100);
         return () => clearTimeout(timeout);
     }, [percentage]);
@@ -63,7 +60,7 @@ export const SkillBar: React.FC<SkillBarProps> = ({label, percentage}) => {
                 <span>{percentage}%</span>
             </Label>
             <BarContainer>
-                <BarFill percentage={progress}/>
+                <BarFill $percentage={progress}/>
             </BarContainer>
         </Wrapper>
     );
@@ -85,8 +82,8 @@ const StyledList = styled.ul`
     margin: 0;
     width: 100%;
     border-bottom: 1px solid #F0F0F6;
-
 `
+
 const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
@@ -109,14 +106,13 @@ const BarContainer = styled.div`
     border: 1px solid ${({theme}) => theme.colors.primary};
     overflow: hidden;
     padding: 1px;
-
 `;
 
 const BarFill = styled.div<{
-    percentage: number
+    $percentage: number
 }>`
     height: 2px;
-    width: ${({percentage}) => percentage}%;
+    width: ${({$percentage}) => $percentage}%;
     background: ${({theme}) => theme.colors.primary};
     border-radius: 6px;
     transition: width 1.4s cubic-bezier(0.25, 1, 0.5, 1);

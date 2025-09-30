@@ -10,7 +10,7 @@ import {Button} from "../../components/button/Button.tsx";
 export const Aside = () => {
     return (
         <StyledAside>
-            <StyckyWrapper>
+            <StickyWrapper>
                 <AuthorCard>
                     <Avatar>
                         <img src={introImg} alt=""/>
@@ -25,7 +25,7 @@ export const Aside = () => {
                 <SkillsBLock/>
                 <ExtraSkills />
                 <Button href="/resume" target="_blank" variant="primary" size="sm">View Resume</Button>
-            </StyckyWrapper>
+            </StickyWrapper>
 
         </StyledAside>
     );
@@ -40,7 +40,7 @@ const StyledAside = styled.aside`
     position: relative;
 `
 
-const StyckyWrapper = styled.div`
+const StickyWrapper = styled.div`
     display: flex;
     gap: ${({theme}) => theme.spacing.lg};
     flex-direction: column;

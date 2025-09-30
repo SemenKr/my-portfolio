@@ -1,9 +1,8 @@
-// Menu.tsx
 import {Icon} from "../Icon"
 import type {MenuItem} from "./types"
 import styled from "styled-components";
 
-type MenuProps = {
+interface MenuProps  {
     items: MenuItem[]
 }
 

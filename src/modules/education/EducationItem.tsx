@@ -15,14 +15,20 @@ export const EducationItem = ({ education }: EducationItemProps) => {
 			<EducationHeader>
 				<AsideTitle>{ education.university }</AsideTitle>
 				<EducationUserInfo>
-          <Text>{education.role}</Text>
-					<Text size={ "xs" } color={ "inverted" } bg={ "primary" } as={ "span" } padding="xs"
-						radius="sm"> {education.period}</Text>
+					<Text>{ education.role }</Text>
+					<Text
+						size="xs"
+						color="inverted"
+						$bg="primary"
+						as="span"
+						$padding="xs"
+						$radius="sm"
+					>{ education.period }</Text>
 				</EducationUserInfo>
 			</EducationHeader>
 			<EducationContent>
-        <AsideTitle>{education.degree}</AsideTitle>
-        <Text>{education.description}</Text>
+				<AsideTitle>{ education.degree }</AsideTitle>
+				<Text>{ education.description }</Text>
 			</EducationContent>
 
 		</EducationItemWrapper>

@@ -1,17 +1,38 @@
 import React from "react";
 import styled, { css } from "styled-components";
 
-type ButtonProps = {
+interface ButtonProps {
     children: React.ReactNode;
+    /** 
+     * @default "primary"
+     * @type {"primary" | "secondary" | "outline"}
+     * @description Стиль кнопки: primary - основной, secondary - второстепенный, outline - контурный
+     */
     variant?: "primary" | "secondary" | "outline";
+    /**
+     * @default "md"
+     * @type {"sm" | "md" | "lg"}
+     * @description Размер кнопки: sm - маленький, md - средний, lg - большой
+     */
     size?: "sm" | "md" | "lg";
+    /** @description Функция вызываемая при клике */
     onClick?: () => void;
+    /** @default "button" */
     type?: "button" | "submit" | "reset";
+    /** @description Если передан, кнопка становится ссылкой */
     href?: string;
+    /** @description Поведение ссылки (только с href) */
     target?: "_self" | "_blank" | "_parent" | "_top";
+    /** @description Неактивное состояние */
     disabled?: boolean;
+    /** @description Текст для скринридеров */
     ariaLabel?: string;
 };
+interface StyledButtonProps {
+    $variant?: "primary" | "secondary" | "outline";
+    $size?: "sm" | "md" | "lg";
+    disabled?: boolean;
+}
 
 const sizeStyles = {
     sm: css`
@@ -59,7 +80,7 @@ const variantStyles = {
     `,
 };
 
-const StyledButton = styled.button<ButtonProps>`
+const StyledButton = styled.button<StyledButtonProps>`
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -70,8 +91,8 @@ const StyledButton = styled.button<ButtonProps>`
     border-radius: ${({ theme }) => theme.borderRadius.sm};
     transition: background-color ${({ theme }) => theme.transition}, border-color ${({ theme }) => theme.transition}, color ${({ theme }) => theme.transition}, box-shadow ${({ theme }) => theme.transition};
 
-    ${({ size = "md" }) => sizeStyles[size]}
-    ${({ variant = "primary" }) => variantStyles[variant]}
+    ${({ $size = "md" }) => sizeStyles[$size]}
+    ${({ $variant = "primary" }) => variantStyles[$variant]}
 
     ${({ disabled }) => disabled && css`
         opacity: 0.6;
@@ -80,22 +101,22 @@ const StyledButton = styled.button<ButtonProps>`
 `;
 
 export const Button: React.FC<ButtonProps> = ({
-                                                  children,
-                                                  variant = "primary",
-                                                  size = "md",
-                                                  disabled,
-                                                  ariaLabel,
-                                                  href,
-                                                  target,
-                                                  ...props
-                                              }) => {
+    children,
+    variant = "primary",
+    size = "md",
+    disabled,
+    ariaLabel,
+    href,
+    target,
+    ...props
+}) => {
     if (href) {
         return (
             <StyledButton
                 as="a"
                 href={href}
-                variant={variant}
-                size={size}
+                $variant={variant}
+                $size={size}
                 disabled={disabled}
                 aria-label={ariaLabel}
                 target={target}
@@ -108,11 +129,11 @@ export const Button: React.FC<ButtonProps> = ({
     }
     return (
         <StyledButton
-            variant={variant}
-            size={size}
+            $variant={variant}
+            $size={size}
             disabled={disabled}
             aria-label={ariaLabel}
-            type={props.type || "button"}
+            type={props.type ?? "button"}
             {...props}
         >
             {children}

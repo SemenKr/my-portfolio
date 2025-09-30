@@ -9,33 +9,29 @@ interface HeaderProps {
     onToggleTheme: () => void;
 }
 
-
-
 export const Header = ({ isDark, onToggleTheme }: HeaderProps) => {
     return (
-        <StyledHeader>
-            <StyckyWrapper>
+        <StyledHeader>  {/* <- убрали isDark отсюда */}
+            <StickyWrapper>
                 <ToggleButton onClick={onToggleTheme}>
                     {isDark ? "🌙" : "☀️"}
                 </ToggleButton>
                 <Logo size={30} />
                 <Menu items={navItems} />
-            </StyckyWrapper>
-
+            </StickyWrapper>
         </StyledHeader>
     );
 };
-
 
 const StyledHeader = styled.header`
     position: relative;
     grid-column: 3/4;
     box-shadow: ${({ theme }) => theme.shadows.md};
-    background: ${({ theme }) => theme.colors.bgMain} ;
+    background: ${({ theme }) => theme.colors.bgMain};
     padding: 4rem 1.5rem;
-    
-`
-const StyckyWrapper = styled.div`
+`;
+
+const StickyWrapper = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -44,4 +40,4 @@ const StyckyWrapper = styled.div`
     position: sticky;
     top: 2rem;
     padding-bottom: 6rem;
-`
+`;

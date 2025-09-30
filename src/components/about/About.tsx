@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
-type Characteristic = {
+interface Characteristic {
     label: string;
     value: string;
     isAvailable?: boolean;
-};
+}
 
 const aboutData: Characteristic[] = [
     { label: "Age", value: "37" },
@@ -13,14 +13,13 @@ const aboutData: Characteristic[] = [
     { label: "Address", value: "SPb" },
 ];
 
-
 export const About = () => {
     return (
         <Dl>
             {aboutData.map((item, index) => (
                 <Row key={index}>
                     <Dt>{item.label}:</Dt>
-                    <Dd isAvailable={item.isAvailable}>{item.value}</Dd>
+                    <Dd $isAvailable={item.isAvailable}>{item.value}</Dd> {/* ← Исправлено */}
                 </Row>
             ))}
         </Dl>
@@ -51,7 +50,7 @@ const Dt = styled.dt`
     padding: 0 5px;
 `;
 
-const Dd = styled.dd<{ isAvailable?: boolean }>`
+const Dd = styled.dd<{ $isAvailable?: boolean }>` {/* ← Исправлено */}
   margin: 0;
-  color: ${({ isAvailable }) => (isAvailable ? "green" : "inherit")};
+  color: ${({ $isAvailable }) => ($isAvailable ? "green" : "inherit")}; {/* ← Исправлено */}
 `;
