@@ -6,6 +6,8 @@ import {Education} from "../../modules/education/Education.tsx";
 import {WorkHistory} from "../../modules/work-history/WorkHistory.tsx";
 import {Blog} from "../../modules/blog/Blog.tsx";
 import { ProjectsSection } from '../../modules/projects/ProjectsSection.tsx';
+import { MapBlock } from '../../modules/map/MapBlock.tsx';
+import { ContactUs } from '../../modules/contactUs/ContantUs.tsx';
 
 export const MainComponent = () => {
     return (
@@ -17,6 +19,8 @@ export const MainComponent = () => {
             <WorkHistory />
             <ProjectsSection />
             <Blog />
+						<ContactUs />
+						<MapBlock />
         </StyledContainer>
     );
 };

@@ -16,7 +16,7 @@ export const Education  = () => {
 	)
 }
 
-const EducationsList = styled.ul`
+export const EducationsList = styled.ul`
     list-style-type: none;
 		background: ${({ theme }) => theme.colors.bgMain};
 		padding: 2rem;

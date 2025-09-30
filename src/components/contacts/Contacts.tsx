@@ -61,11 +61,11 @@ const StyledList = styled.ul`
         background-color: ${({theme}) => theme.colors.primary};
         border-radius: ${({theme}) => theme.borderRadius.full};
         transition: box-shadow ${({theme}) => theme.transition},
-        opacity ${({theme}) => theme.transition};
+        transform ${({theme}) => theme.transition};
 
         &:hover {
             box-shadow: ${({theme}) => theme.shadows.md};
-            opacity: 0.8;
+						transform: translateY(-2px);
         }
 
         svg {

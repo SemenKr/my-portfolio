@@ -5,6 +5,7 @@ import {MainComponent} from "./layout/main/MainComponent.tsx";
 import {Header} from "./layout/header/Header.tsx";
 import {GlobalStyle} from "./shared/styles/GlobalStyles.tsx";
 import {Aside} from "./layout/aside/Aside.tsx";
+import { Footer } from './layout/footer/Footer.tsx';
 
 export function App() {
     const [isDark, setIsDark] = useState(false);
@@ -18,6 +19,7 @@ export function App() {
                 <Header isDark={isDark} onToggleTheme={() => setIsDark(prev => !prev)}/>
                 <MainComponent/>
                 <Aside />
+								<Footer />
             </StyledContainer>
 
         </ThemeProvider>

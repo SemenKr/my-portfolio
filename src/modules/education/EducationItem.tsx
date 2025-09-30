@@ -53,6 +53,7 @@ const EducationHeader = styled.div`
 const EducationUserInfo = styled.div`
 display: flex;
 gap: 1rem;
+flex-wrap: wrap;
 `
 const EducationContent = styled.div`
 display: flex;
